@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CS Media – Marketing para restaurantes, pizzarias e hamburguerias</title>
+<meta name="description" content="Mais pedidos para o seu restaurante com Meta Ads e gestão de iFood, 99Food e Keeta.">
+<link rel="icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- META PIXEL: cole aqui o código do seu Pixel -->
+
+<style>
+:root{--ink:#0B0A10;--bg:#EFEEF2;--muted:#5E5A6B;--line:#DAD7E1;--p1:#6A23B0;--p2:#9B45E0;--p3:#D47BF6;--grad:linear-gradient(120deg,var(--p1),var(--p2) 55%,var(--p3))}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.btn,summary{font-family:Sora,Inter,sans-serif;letter-spacing:-.02em;line-height:1.12}
+.wrap{width:min(1080px,100% - 40px);margin-inline:auto}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;cursor:pointer;text-decoration:none;font-weight:700;font-size:17px;padding:18px 30px;border-radius:999px;color:#fff;background:var(--grad);box-shadow:0 12px 30px -10px rgba(122,47,192,.7);transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+
+/* header */
+header{padding:16px 0;border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;gap:12px}
+header img{height:34px}
+header p{font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+
+/* hero com formulário */
+.hero{position:relative;color:#fff;padding:48px 0 64px;background:#0B0A10 url(delivery.jpg) center/cover no-repeat}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(11,10,16,.96) 30%,rgba(11,10,16,.8) 60%,rgba(40,12,70,.72))}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(28px,4.4vw,50px);font-weight:800}
+.hero-txt>p{font-size:17px;color:#C9C3D6;margin-top:18px;max-width:520px}
+.tag{display:inline-block;background:var(--grad);font-family:Sora,Inter,sans-serif;font-weight:800;font-size:12px;letter-spacing:.16em;padding:6px 12px;border-radius:8px;margin-bottom:16px}
+.steps{margin-top:26px;display:grid;gap:14px}
+.step{display:flex;gap:14px;align-items:center}
+.step b{flex:none;width:38px;height:38px;border-radius:12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);display:grid;place-items:center;font-family:Sora,Inter,sans-serif;color:var(--p3)}
+.step h3{font-size:16px;margin-bottom:2px}
+.step p{color:#B5AFC3;font-size:14px}
+.card{background:#fff;color:var(--ink);border-radius:24px;padding:28px;box-shadow:0 30px 70px -30px rgba(0,0,0,.7)}
+.card-h{font-family:Sora,Inter,sans-serif;font-weight:800;font-size:20px;margin-bottom:16px}
+.field{margin-bottom:16px}
+.field label{display:block;font-weight:600;font-size:14px;margin-bottom:7px}
+.field input,.field select{width:100%;font:inherit;font-size:16px;padding:14px 16px;border:1.5px solid var(--line);border-radius:12px;background:#FAFAFC;outline:none;appearance:none}
+.field select{background:#FAFAFC url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235E5A6B' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 14px center/16px;padding-right:40px}
+.field input:focus,.field select:focus{border-color:var(--p2);box-shadow:0 0 0 4px rgba(155,69,224,.15)}
+.yn{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.yn label{margin:0;position:relative}
+.yn input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.yn span{display:block;text-align:center;padding:13px;border:1.5px solid var(--line);border-radius:12px;font-weight:600;cursor:pointer;background:#FAFAFC}
+.yn input:checked+span{border-color:var(--p2);background:#F4ECFB;color:var(--p1)}
+.err{color:#C0264B;font-size:13px;margin-top:6px;display:none}
+.invalid .err{display:block}
+.invalid input,.invalid select{border-color:#E07A93}
+.card .btn{width:100%;margin-top:6px}
+.safe{font-size:12px;color:var(--muted);text-align:center;margin-top:12px}
+.done{display:none;text-align:center}
+.done h3{font-size:24px;margin-bottom:10px}
+.done p{color:var(--muted);margin-bottom:22px}
+
+/* método */
+.sec{padding:76px 0}
+.kicker{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--p2);margin-bottom:12px}
+.sec h2{font-size:clamp(28px,3.6vw,40px);font-weight:800;max-width:720px}
+.split{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center}
+.split img{width:100%;border-radius:24px;display:block;aspect-ratio:4/3;object-fit:cover;background:#ddd}
+.list{list-style:none;margin-top:26px;display:grid;gap:14px}
+.list li{display:flex;gap:14px;font-size:17px}
+.list li::before{content:"";flex:none;width:24px;height:24px;margin-top:1px;border-radius:50%;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center/12px no-repeat,var(--grad)}
+.list b{font-weight:600}
+.center{text-align:center;margin-top:40px}
+
+/* faq */
+.faq{max-width:760px;margin-top:32px}
+details{background:#fff;border:1px solid var(--line);border-radius:16px;padding:0 22px;margin-bottom:10px}
+summary{list-style:none;cursor:pointer;padding:20px 0;font-weight:700;font-size:17px;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--p2);font-size:22px;line-height:1}
+details[open] summary::after{content:"–"}
+details p{color:var(--muted);padding-bottom:20px}
+
+footer{padding:28px 0;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px}
+footer img{height:26px}
+
+@media (max-width:860px){
+  .hero .wrap,.split{grid-template-columns:1fr;gap:26px}
+  .steps{display:none}
+  .split img{order:-1}
+}
+@media (max-width:560px){
+  .hero{padding:28px 0 48px}
+  .hero{padding:26px 0 40px}
+  .hero-txt>p{font-size:15.5px;margin-top:12px}
+  .card{padding:24px 20px}
+  .sec{padding:56px 0}
+  header p{display:none}
+}
+</style>
+</head>
+<body>
+
+<header><div class="wrap"><img src="logo.png" alt="CS Media"><p>Marketing para restaurantes, pizzarias e hamburguerias</p></div></header>
+
+<section class="hero" id="diagnostico">
+  <div class="wrap">
+    <div class="hero-txt">
+      <span class="tag">AVISO</span>
+      <h1>Seu restaurante pode vender muito mais. <span class="grad">O que falta é o cliente certo te encontrar.</span></h1>
+      <p>Anúncios no Instagram e Facebook + gestão do iFood, 99Food e Keeta para colocar seu restaurante na frente de quem está com fome agora, perto de você.</p>
+      <div class="steps">
+        <div class="step"><b>1</b><div><h3>Preencha o formulário</h3><p>Leva menos de 30 segundos.</p></div></div>
+        <div class="step"><b>2</b><div><h3>Fale com a CS no WhatsApp</h3><p>Você recebe o diagnóstico do seu restaurante, sem compromisso.</p></div></div>
+      </div>
+    </div>
+    <div class="card">
+      <form id="leadForm" novalidate>
+        <div class="card-h">Receba seu diagnóstico gratuito</div>
+        <div class="field"><label for="nome">Seu nome</label><input id="nome" autocomplete="name" placeholder="Como podemos te chamar?"><div class="err">Informe seu nome.</div></div>
+        <div class="field"><label for="whats">WhatsApp</label><input id="whats" type="tel" inputmode="tel" autocomplete="tel" placeholder="(11) 90000-0000"><div class="err">Informe um WhatsApp com DDD.</div></div>
+        <div class="field"><label for="fat">Faturamento mensal do restaurante</label>
+          <select id="fat">
+            <option value="">Selecione</option>
+            <option data-low="1">Até R$ 20 mil</option>
+            <option>R$ 20 mil a R$ 50 mil</option>
+            <option>R$ 50 mil a R$ 100 mil</option>
+            <option>R$ 100 mil a R$ 300 mil</option>
+            <option>Acima de R$ 300 mil</option>
+          </select><div class="err">Selecione uma faixa.</div></div>
+        <div class="field" id="f-inv"><label>Você investiria a partir de R$ 1.500/mês em marketing?</label>
+          <div class="yn">
+            <label><input type="radio" name="inv" value="Sim"><span>Sim</span></label>
+            <label><input type="radio" name="inv" value="Não"><span>Não</span></label>
+          </div><div class="err">Escolha uma opção.</div></div>
+        <button class="btn" type="submit">Receber meu diagnóstico</button>
+        <p class="safe">Ao enviar, você vai direto para o nosso WhatsApp.</p>
+      </form>
+      <div class="done" id="done">
+        <h3 id="doneT">Falta só um passo</h3>
+        <p id="doneP">Abrindo o WhatsApp com suas respostas. Se não abrir sozinho, toque no botão abaixo.</p>
+        <a class="btn" id="wa" href="#" target="_blank" rel="noopener">Enviar no WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap split">
+    <img src="hero.jpg" alt="Dono de restaurante acompanhando pedidos de delivery no celular" style="aspect-ratio:4/5;object-position:center 30%">
+    <div>
+      <div class="kicker">O Método CS</div>
+      <h2>Restaurante cheio de pedido não é sorte. É método.</h2>
+      <ul class="list">
+        <li><span><b>Anúncios para quem está com fome</b>, no raio de entrega e no horário de pico.</span></li>
+        <li><span><b>Loja forte nos apps</b>: cardápio, fotos, combos e campanhas no iFood, 99Food e Keeta.</span></li>
+        <li><span><b>Fim da dependência de cupom</b> e de boca a boca para vender.</span></li>
+        <li><span><b>Relatório diário no WhatsApp</b> com pedidos, faturamento e custo por pedido.</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="center"><a class="btn" href="#diagnostico">Quero aplicar no meu restaurante</a></div>
+</section>
+
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="kicker">Perguntas frequentes</div>
+    <h2>Antes de você perguntar.</h2>
+    <div class="faq">
+      <details><summary>Em quanto tempo vejo resultado?</summary><p>Os primeiros sinais costumam aparecer nas primeiras semanas de campanha. No diagnóstico a gente mostra o que é realista para o seu restaurante.</p></details>
+      <details><summary>Quanto custa?</summary><p>Depende do escopo: só anúncios, só apps de delivery ou os dois. O valor é apresentado no diagnóstico, sem compromisso.</p></details>
+      <details><summary>Já tive experiência ruim com agência. O que muda?</summary><p>Foco só em restaurante e delivery, e número na mesa todo dia. Se não está funcionando, você vê e a gente ajusta.</p></details>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap"><img src="logo.png" alt="CS Media"><span>2026 © CS Media · Mooca, São Paulo</span></div></footer>
+
+<script>
+const WHATSAPP = "5511961223161";
+// Backup por e-mail (FormSubmit). Coloque seu e-mail aqui para receber cada lead também por e-mail:
+const EMAIL_BACKUP = ""; // ex.: "seuemail@gmail.com"
+
+const f = document.getElementById('leadForm'), w = document.getElementById('whats');
+w.addEventListener('input', () => {
+  const d = w.value.replace(/\D/g,'').slice(0,11);
+  w.value = d.length > 7 ? `(${d.slice(0,2)}) ${d.slice(2,7)}-${d.slice(7)}` : d.length > 2 ? `(${d.slice(0,2)}) ${d.slice(2)}` : d;
+});
+const mark = (el, bad) => (el.closest('.field').classList.toggle('invalid', bad), bad);
+f.addEventListener('submit', e => {
+  e.preventDefault();
+  const nome = document.getElementById('nome'), fat = document.getElementById('fat'), inv = f.querySelector('[name=inv]:checked');
+  const bad = [mark(nome, !nome.value.trim()), mark(w, w.value.replace(/\D/g,'').length < 10), mark(fat, !fat.value)].some(Boolean);
+  document.getElementById('f-inv').classList.toggle('invalid', !inv);
+  if (bad || !inv) return;
+  const ok = inv.value === 'Sim' && fat.selectedOptions[0].dataset.low !== '1';
+  const msg = `Olá! Quero o diagnóstico gratuito da CS Media.\n\nNome: ${nome.value.trim()}\nWhatsApp: ${w.value}\nFaturamento: ${fat.value}\nInvestiria a partir de R$ 1.500/mês: ${inv.value}`;
+  document.getElementById('wa').href = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(msg);
+  if (!ok) { document.getElementById('doneT').textContent = 'Recebemos suas respostas'; document.getElementById('doneP').textContent = 'Envie no WhatsApp e a gente te fala com sinceridade qual o melhor primeiro passo para o seu momento.'; }
+  if (EMAIL_BACKUP) {
+    const data = {_subject: 'Novo lead CS Media: ' + nome.value.trim() + (ok ? ' (qualificado)' : ''), _template: 'table', _captcha: 'false',
+      Nome: nome.value.trim(), WhatsApp: w.value, Faturamento: fat.value, 'Investiria R$ 1.500/mês': inv.value, Qualificado: ok ? 'Sim' : 'Não'};
+    const body = JSON.stringify(data);
+    try { fetch('https://formsubmit.co/ajax/' + EMAIL_BACKUP, {method:'POST', headers:{'Content-Type':'application/json', Accept:'application/json'}, body, keepalive:true}).catch(()=>{}); } catch(_) {}
+  }
+  try { window.fbq && fbq('track', 'Lead', {content_name: ok ? 'qualificado' : 'nao_qualificado'}); } catch(_) {}
+  f.style.display = 'none'; document.getElementById('done').style.display = 'block';
+  const link = document.getElementById('wa').href;
+  setTimeout(() => { try { window.location.href = link; } catch(_) {} }, 700);
+});
+</script>
+</body>
+</html>
