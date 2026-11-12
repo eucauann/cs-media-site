@@ -45,9 +45,10 @@ header p{font-size:13px;font-weight:600;color:var(--muted);text-transform:upperc
 .card-h{font-family:Sora,Inter,sans-serif;font-weight:800;font-size:20px;margin-bottom:16px}
 .field{margin-bottom:16px}
 .field label{display:block;font-weight:600;font-size:14px;margin-bottom:7px}
-.field input,.field select{width:100%;font:inherit;font-size:16px;padding:14px 16px;border:1.5px solid var(--line);border-radius:12px;background:#FAFAFC;outline:none;appearance:none}
+.field input,.field select,.field textarea{width:100%;font:inherit;font-size:16px;padding:14px 16px;border:1.5px solid var(--line);border-radius:12px;background:#FAFAFC;outline:none;appearance:none}
 .field select{background:#FAFAFC url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235E5A6B' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 14px center/16px;padding-right:40px}
-.field input:focus,.field select:focus{border-color:var(--p2);box-shadow:0 0 0 4px rgba(155,69,224,.15)}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--p2);box-shadow:0 0 0 4px rgba(155,69,224,.15)}
+.field textarea{resize:vertical;min-height:84px;line-height:1.45}
 .yn{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .yn label{margin:0;position:relative}
 .yn input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
@@ -55,7 +56,7 @@ header p{font-size:13px;font-weight:600;color:var(--muted);text-transform:upperc
 .yn input:checked+span{border-color:var(--p2);background:#F4ECFB;color:var(--p1)}
 .err{color:#C0264B;font-size:13px;margin-top:6px;display:none}
 .invalid .err{display:block}
-.invalid input,.invalid select{border-color:#E07A93}
+.invalid input,.invalid select,.invalid textarea{border-color:#E07A93}
 .card .btn{width:100%;margin-top:6px}
 .safe{font-size:12px;color:var(--muted);text-align:center;margin-top:12px}
 .done{display:none;text-align:center}
@@ -125,6 +126,7 @@ footer img{height:26px}
         <div class="card-h">Receba seu diagnóstico gratuito</div>
         <div class="field"><label for="nome">Seu nome</label><input id="nome" autocomplete="name" placeholder="Como podemos te chamar?"><div class="err">Informe seu nome.</div></div>
         <div class="field"><label for="whats">WhatsApp</label><input id="whats" type="tel" inputmode="tel" autocomplete="tel" placeholder="(11) 90000-0000"><div class="err">Informe um WhatsApp com DDD.</div></div>
+        <div class="field"><label for="insta">@ do Instagram do restaurante</label><input id="insta" autocapitalize="off" autocomplete="off" placeholder="@seurestaurante"><div class="err">Informe o @ do restaurante.</div></div>
         <div class="field"><label for="fat">Faturamento mensal do restaurante</label>
           <select id="fat">
             <option value="">Selecione</option>
@@ -134,6 +136,7 @@ footer img{height:26px}
             <option>R$ 100 mil a R$ 300 mil</option>
             <option>Acima de R$ 300 mil</option>
           </select><div class="err">Selecione uma faixa.</div></div>
+        <div class="field"><label for="op">O que está acontecendo com o seu delivery hoje?</label><textarea id="op" rows="3" placeholder="Ex.: poucos pedidos na semana, nota caindo no iFood, dependo de cupom, atraso na entrega..."></textarea><div class="err">Conte rapidamente como está o seu delivery.</div></div>
         <div class="field" id="f-inv"><label>Você investiria a partir de R$ 1.500/mês em marketing?</label>
           <div class="yn">
             <label><input type="radio" name="inv" value="Sim"><span>Sim</span></label>
@@ -152,7 +155,8 @@ footer img{height:26px}
 </section>
 
 <section class="sec">
-  <div class="wrap">
+  <div class="wrap split">
+    <img src="dono.jpg" alt="Dono de restaurante acompanhando pedidos de delivery no celular" style="aspect-ratio:4/5;object-position:center 20%">
     <div>
       <div class="kicker">O Método CS</div>
       <h2>Restaurante cheio de pedido não é sorte. É método.</h2>
@@ -194,12 +198,14 @@ w.addEventListener('input', () => {
 const mark = (el, bad) => (el.closest('.field').classList.toggle('invalid', bad), bad);
 f.addEventListener('submit', e => {
   e.preventDefault();
+  const insta = document.getElementById('insta'), op = document.getElementById('op');
   const nome = document.getElementById('nome'), fat = document.getElementById('fat'), inv = f.querySelector('[name=inv]:checked');
-  const bad = [mark(nome, !nome.value.trim()), mark(w, w.value.replace(/\D/g,'').length < 10), mark(fat, !fat.value)].some(Boolean);
+  const bad = [mark(nome, !nome.value.trim()), mark(w, w.value.replace(/\D/g,'').length < 10), mark(fat, !fat.value), mark(insta, insta.value.replace(/[@\s]/g,'').length < 2), mark(op, op.value.trim().length < 3)].some(Boolean);
   document.getElementById('f-inv').classList.toggle('invalid', !inv);
   if (bad || !inv) return;
   const ok = inv.value === 'Sim' && fat.selectedOptions[0].dataset.low !== '1';
-  const msg = `Olá! Quero o diagnóstico gratuito da CS Media.\n\nNome: ${nome.value.trim()}\nWhatsApp: ${w.value}\nFaturamento: ${fat.value}\nInvestiria a partir de R$ 1.500/mês: ${inv.value}`;
+  const ig = '@' + insta.value.trim().replace(/^.*instagram\.com\//i,'').replace(/^@+/,'').split(/[\/?\s]/)[0];
+  const msg = `Olá! Quero o diagnóstico gratuito da CS Media.\n\nNome: ${nome.value.trim()}\nWhatsApp: ${w.value}\nInstagram: ${ig}\nFaturamento: ${fat.value}\nComo está o delivery: ${op.value.trim()}\nInvestiria a partir de R$ 1.500/mês: ${inv.value}`;
   document.getElementById('wa').href = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(msg);
   if (!ok) { document.getElementById('doneT').textContent = 'Recebemos suas respostas'; document.getElementById('doneP').textContent = 'Envie no WhatsApp e a gente te fala com sinceridade qual o melhor primeiro passo para o seu momento.'; }
   if (EMAIL_BACKUP) {
